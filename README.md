@@ -14,7 +14,7 @@ ritual instead of a demo page.
   start ritual, a stall callout, prompt chips, a quote and a block spec.
 - A **Focus details page** (`details`) with an accordion on how the timer works, why a pack cannot run a
   background timer, how to update it and how to fork it, plus the list of what stays on the device.
-- A **FOCUS KIT** card on the Now screen: one banner and one copy action, deliberately light.
+- A **FOCUS TIMER** card on the Now screen: one banner and one copy action, deliberately light.
 - A **FOCUS KIT** section in Settings with the plugin id, version, repository and update path.
 - A **FOCUS** composer chip that inserts a 25-minute block instruction.
 - The **Focus Amber** palette: an amber accent (`#D97706` light, `#FBBF24` dark) derived from the bundled
@@ -26,7 +26,7 @@ ritual instead of a demo page.
 |---|---|---|
 | Focus page (docked) | heading, paragraph, timer, checklist, callout, chips, quote, keyValue | timer countdown, checklist ticks |
 | Focus details page | heading, accordion, bullets, divider | accordion expand/collapse |
-| FOCUS KIT home card | banner | none (actions only) |
+| FOCUS TIMER home card | banner | none (actions only) |
 | FOCUS KIT settings section | keyValue | none (actions only) |
 
 The two interactive families on the Focus page keep their state in the renderer, never in the pack
