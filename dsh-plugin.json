@@ -1,9 +1,9 @@
 {
   "apiVersion": 1,
   "id": "sample.focus-timer",
-  "name": "Focus Timer",
-  "version": "1.0.3",
-  "description": "A data-only focus timer for DSH Mobile. It adds a docked Focus page with a 25/5 block plan, a Focus Timer card on the Now screen, a Settings card that shows where the pack came from, one composer chip that asks the assistant for a three-step plan, and a warm amber accent derived from the bundled Refined Ember palette. Nothing here runs code or keeps a clock in the background: the countdown lives in the prompts you send, and every button is one fixed action the app already knows how to perform. This is the sample used to demonstrate install from a Git repository.",
+  "name": "Focus Kit",
+  "version": "2.0.0",
+  "description": "A data-only focus toolkit for DSH Mobile: a docked Focus page with a 25-minute on-screen timer, a three-step start ritual, prompts you can copy into chat, and a details page that explains exactly what is and is not running. Nothing runs in the background: the timer is local to the page, the copy actions write to the clipboard, and every button is one fixed action the app already knows. Ships a Focus Amber accent derived from the bundled Refined Ember palette.",
   "author": "DSH Mobile Samples",
   "experimental": true,
   "pages": [
@@ -14,28 +14,107 @@
       "dock": true,
       "order": 210,
       "body": {
-        "title": "Focus timer",
-        "intro": "A 25/5 focus rhythm kept as pages and prompts, not as a background service.",
-        "rows": [
+        "title": "Focus Kit",
+        "intro": "Twenty-five minutes, one outcome. Set the timer, run the three-step ritual, and copy a prompt into chat when you want the assistant to hold you to the block.",
+        "components": [
           {
-            "label": "BLOCK",
-            "value": "25 minutes",
-            "note": "One focus block. The app does not run a timer; the countdown is in the prompt you send."
+            "type": "heading",
+            "text": "Pick one outcome, start the clock",
+            "eyebrow": "FOCUS KIT",
+            "level": 1
           },
           {
-            "label": "BREAK",
-            "value": "5 minutes",
-            "note": "Step away, then come back to this page and start the next block."
+            "type": "paragraph",
+            "text": "Choose the outcome before the timer starts. If you cannot name it in one sentence, the first block is deciding what the outcome is, and that still counts. The timer lives on this page only, so use it while you are here and copy the prompt when you want the assistant to keep the block honest."
           },
           {
-            "label": "SOURCE",
-            "value": "GitHub repository",
-            "note": "Installed from github.com/James0507-cell/dsh-plugin-focus-timer as a data-only pack."
+            "type": "timer",
+            "label": "Focus block",
+            "minutes": 25,
+            "note": "Local to this page. Leaving resets it; nothing buzzes."
           },
           {
-            "label": "FORMAT",
-            "value": "data-only JSON",
-            "note": "The pack ships no code; the app interprets dsh-plugin.json with its own renderer."
+            "type": "checklist",
+            "title": "Start ritual",
+            "items": [
+              {
+                "label": "Name the outcome in one sentence",
+                "note": "Finishable inside the block, and worth finishing."
+              },
+              {
+                "label": "Silence the phone",
+                "note": "Do Not Disturb on; face down if the screen pulls at you."
+              },
+              {
+                "label": "Open the file, ticket or session you will touch",
+                "note": "The block starts with the thing already on screen."
+              }
+            ]
+          },
+          {
+            "type": "callout",
+            "title": "If the block stalls",
+            "text": "Stalled is data, not failure. Copy the stall prompt, say what you are avoiding, and let the assistant shrink the next step until it is startable. A block that ends in a smaller next step still worked.",
+            "tone": "warning",
+            "iconKey": "pulse"
+          },
+          {
+            "type": "chips",
+            "title": "Prompts in the copy buttons",
+            "items": [
+              {
+                "label": "ONE OUTCOME",
+                "iconKey": "pulse",
+                "tone": "info"
+              },
+              {
+                "label": "SMALLEST STEP",
+                "tone": "success"
+              },
+              {
+                "label": "HARD PART FIRST",
+                "tone": "danger"
+              },
+              {
+                "label": "TIMEBOX 25",
+                "iconKey": "work"
+              },
+              {
+                "label": "STOP ON TIME",
+                "tone": "warning"
+              }
+            ]
+          },
+          {
+            "type": "quote",
+            "text": "A block you can start is worth more than a plan you cannot. Make the next action small enough to be embarrassing.",
+            "source": "Focus Kit"
+          },
+          {
+            "type": "keyValue",
+            "title": "The block",
+            "rows": [
+              {
+                "label": "LENGTH",
+                "value": "25 minutes"
+              },
+              {
+                "label": "BREAK",
+                "value": "5 minutes after each block"
+              },
+              {
+                "label": "BLOCKS PER DAY",
+                "value": "Four, then stop"
+              },
+              {
+                "label": "OUTPUT",
+                "value": "One named outcome per block"
+              },
+              {
+                "label": "FAILURE MODE",
+                "value": "Scope creep, not distraction"
+              }
+            ]
           }
         ],
         "actions": [
@@ -45,9 +124,9 @@
             "target": "host.screen.work"
           },
           {
-            "label": "START BLOCK",
-            "type": "toast",
-            "value": "Focus block started"
+            "label": "COPY FOCUS PROMPT",
+            "type": "copy",
+            "value": "I have one 25-minute focus block and one outcome: <name it here>. First ask me for the outcome in one sentence. Then give me only the first concrete step and stop - no plan, no alternatives. If that step takes more than 10 minutes, cut it in half. When I say the block is done, ask what actually finished and help me write one line of evidence."
           },
           {
             "label": "DETAILS",
@@ -63,22 +142,59 @@
       "iconKey": "sliders",
       "order": 211,
       "body": {
-        "title": "How this sample works",
-        "intro": "This second page exists to show the open-page action; every value below is static data from the repository file.",
-        "rows": [
+        "title": "How Focus Kit works",
+        "intro": "The page above is declarative JSON rendered by the app. This page is the honest fine print: what the timer does, why it cannot buzz, and how to update the file.",
+        "components": [
           {
-            "label": "PACK ID",
-            "value": "sample.focus-timer"
+            "type": "heading",
+            "text": "What the timer actually does",
+            "eyebrow": "FINE PRINT",
+            "level": 2
           },
           {
-            "label": "INSTALLED FROM",
-            "value": "Git repository",
-            "note": "Settings -> Plugins -> INSTALL PLUGIN -> FROM GIT REPOSITORY."
+            "type": "accordion",
+            "title": "Read this once",
+            "sections": [
+              {
+                "title": "How it works",
+                "text": "The countdown is a widget in the page renderer. It starts when you tap start, ticks while the page is open, and resets when you leave. The pack itself stores nothing: no timer, no state, no event history."
+              },
+              {
+                "title": "Why no background timer",
+                "text": "A declarative pack is data, never code, so it cannot start a foreground service, schedule an alarm or post a notification. A pack that promised to buzz mid-block would be lying. Use the on-screen clock while you work, and the copied prompt as the part that survives leaving the page."
+              },
+              {
+                "title": "How to update it",
+                "text": "Settings -> Plugins -> check for updates on this pack, or reinstall from the repository. The repository's dsh-plugin.json is this exact file; only version and content change between releases."
+              },
+              {
+                "title": "How to make it yours",
+                "text": "Fork github.com/James0507-cell/dsh-plugin-focus-timer, edit the prompt in the copy action and the block lengths, bump version, push, then point the installer at your fork. The app validates the whole file before installing it."
+              }
+            ]
           },
           {
-            "label": "RUNTIME",
-            "value": "none",
-            "note": "A pack cannot start timers, run code or fetch anything; the app only renders these fields."
+            "type": "bullets",
+            "title": "What stays on the device",
+            "items": [
+              {
+                "text": "Timer and checklist state live in the renderer",
+                "note": "Leaving the page resets them; the pack writes nothing to disk."
+              },
+              {
+                "text": "Copy actions write to the clipboard only",
+                "note": "The app confirms with a toast; the text is not sent anywhere."
+              },
+              {
+                "text": "The page makes no network calls",
+                "note": "The plugin manager fetches updates, not the page."
+              }
+            ],
+            "ordered": false
+          },
+          {
+            "type": "divider",
+            "label": "END OF DETAILS"
           }
         ],
         "actions": [
@@ -98,52 +214,66 @@
   ],
   "homeCards": [
     {
-      "title": "FOCUS TIMER",
-      "subtitle": "Data-only demo pack, updated from Git - v1.0.3",
-      "rows": [
+      "title": "FOCUS KIT",
+      "subtitle": "25 minutes, one outcome - v2.0.0",
+      "components": [
         {
-          "label": "BLOCK",
-          "value": "25 minutes"
-        },
-        {
-          "label": "BREAK",
-          "value": "5 minutes"
-        },
-        {
-          "label": "SOURCE",
-          "value": "GitHub"
+          "type": "banner",
+          "title": "Start a 25-minute block",
+          "text": "One timer, one ritual, one prompt. Open the Focus page and pick the outcome first.",
+          "iconKey": "pulse",
+          "tone": "info",
+          "actions": [
+            {
+              "label": "OPEN FOCUS",
+              "type": "open-page",
+              "target": "focus"
+            }
+          ]
         }
       ],
       "actions": [
         {
-          "label": "OPEN FOCUS",
-          "type": "open-page",
-          "target": "focus"
-        },
-        {
-          "label": "START BLOCK",
-          "type": "toast",
-          "value": "Focus block started"
+          "label": "COPY PROMPT",
+          "type": "copy",
+          "value": "Give me one 25-minute focus block: ask me for the outcome, then give me only the first concrete step and stop."
         }
       ]
     }
   ],
   "settingsSections": [
     {
-      "title": "FOCUS TIMER",
-      "subtitle": "Sample declarative plugin",
-      "rows": [
+      "title": "FOCUS KIT",
+      "subtitle": "Declarative pack - v2.0.0",
+      "components": [
         {
-          "label": "PLUGIN ID",
-          "value": "sample.focus-timer"
-        },
+          "type": "keyValue",
+          "title": "Pack source",
+          "rows": [
+            {
+              "label": "PLUGIN ID",
+              "value": "sample.focus-timer"
+            },
+            {
+              "label": "VERSION",
+              "value": "2.0.0"
+            },
+            {
+              "label": "REPOSITORY",
+              "value": "github.com/James0507-cell/dsh-plugin-focus-timer"
+            },
+            {
+              "label": "HOW TO UPDATE",
+              "value": "Plugins -> update check, or reinstall the repository"
+            }
+          ]
+        }
+      ],
+      "actions": [
         {
-          "label": "SOURCE",
-          "value": "GitHub repository"
-        },
-        {
-          "label": "TYPE",
-          "value": "data only"
+          "label": "OPEN DETAILS",
+          "type": "open-page",
+          "target": "details"
         }
       ]
     }
@@ -151,7 +281,7 @@
   "composerActions": [
     {
       "label": "FOCUS",
-      "text": "Start a 25-minute focus block; list only the next three actions."
+      "text": "Start a 25-minute focus block. Ask me for the one outcome, then give me only the first concrete step and stop."
     }
   ],
   "themes": [
