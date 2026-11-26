@@ -1,0 +1,167 @@
+{
+  "apiVersion": 1,
+  "id": "sample.focus-timer",
+  "name": "Focus Timer",
+  "version": "1.0.0",
+  "description": "A data-only focus timer for DSH Mobile. It adds a docked Focus page with a 25/5 block plan, a Focus Timer card on the Now screen, a Settings card that shows where the pack came from, one composer chip that asks the assistant for a three-step plan, and a warm amber accent derived from the bundled Refined Ember palette. Nothing here runs code or keeps a clock in the background: the countdown lives in the prompts you send, and every button is one fixed action the app already knows how to perform. This is the sample used to demonstrate install from a Git repository.",
+  "author": "DSH Mobile Samples",
+  "experimental": true,
+  "pages": [
+    {
+      "id": "focus",
+      "title": "Focus",
+      "iconKey": "pulse",
+      "dock": true,
+      "order": 210,
+      "body": {
+        "title": "Focus timer",
+        "intro": "A 25/5 focus rhythm kept as pages and prompts, not as a background service.",
+        "rows": [
+          {
+            "label": "BLOCK",
+            "value": "25 minutes",
+            "note": "One focus block. The app does not run a timer; the countdown is in the prompt you send."
+          },
+          {
+            "label": "BREAK",
+            "value": "5 minutes",
+            "note": "Step away, then come back to this page and start the next block."
+          },
+          {
+            "label": "SOURCE",
+            "value": "GitHub repository",
+            "note": "Installed from github.com/James0507-cell/dsh-plugin-focus-timer as a data-only pack."
+          },
+          {
+            "label": "FORMAT",
+            "value": "data-only JSON",
+            "note": "The pack ships no code; the app interprets dsh-plugin.json with its own renderer."
+          }
+        ],
+        "actions": [
+          {
+            "label": "OPEN WORK",
+            "type": "open-screen",
+            "target": "host.screen.work"
+          },
+          {
+            "label": "START BLOCK",
+            "type": "toast",
+            "value": "Focus block started"
+          },
+          {
+            "label": "DETAILS",
+            "type": "open-page",
+            "target": "details"
+          }
+        ]
+      }
+    },
+    {
+      "id": "details",
+      "title": "Focus details",
+      "iconKey": "sliders",
+      "order": 211,
+      "body": {
+        "title": "How this sample works",
+        "intro": "This second page exists to show the open-page action; every value below is static data from the repository file.",
+        "rows": [
+          {
+            "label": "PACK ID",
+            "value": "sample.focus-timer"
+          },
+          {
+            "label": "INSTALLED FROM",
+            "value": "Git repository",
+            "note": "Settings -> Plugins -> INSTALL PLUGIN -> FROM GIT REPOSITORY."
+          },
+          {
+            "label": "RUNTIME",
+            "value": "none",
+            "note": "A pack cannot start timers, run code or fetch anything; the app only renders these fields."
+          }
+        ],
+        "actions": [
+          {
+            "label": "BACK TO FOCUS",
+            "type": "open-page",
+            "target": "focus"
+          },
+          {
+            "label": "OPEN SETTINGS",
+            "type": "open-screen",
+            "target": "host.screen.settings"
+          }
+        ]
+      }
+    }
+  ],
+  "homeCards": [
+    {
+      "title": "FOCUS TIMER",
+      "subtitle": "Data-only demo pack, installed from Git",
+      "rows": [
+        {
+          "label": "BLOCK",
+          "value": "25 minutes"
+        },
+        {
+          "label": "BREAK",
+          "value": "5 minutes"
+        },
+        {
+          "label": "SOURCE",
+          "value": "GitHub"
+        }
+      ],
+      "actions": [
+        {
+          "label": "OPEN FOCUS",
+          "type": "open-page",
+          "target": "focus"
+        },
+        {
+          "label": "START BLOCK",
+          "type": "toast",
+          "value": "Focus block started"
+        }
+      ]
+    }
+  ],
+  "settingsSections": [
+    {
+      "title": "FOCUS TIMER",
+      "subtitle": "Sample declarative plugin",
+      "rows": [
+        {
+          "label": "PLUGIN ID",
+          "value": "sample.focus-timer"
+        },
+        {
+          "label": "SOURCE",
+          "value": "GitHub repository"
+        },
+        {
+          "label": "TYPE",
+          "value": "data only"
+        }
+      ]
+    }
+  ],
+  "composerActions": [
+    {
+      "label": "FOCUS",
+      "text": "Start a 25-minute focus block; list only the next three actions."
+    }
+  ],
+  "themes": [
+    {
+      "id": "focus-amber",
+      "label": "Focus Amber",
+      "note": "Warm amber accent on the bundled Refined Ember palette.",
+      "baseThemeId": "concept-01",
+      "accentHex": "#D97706",
+      "darkAccentHex": "#FBBF24"
+    }
+  ]
+}
