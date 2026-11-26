@@ -2,7 +2,7 @@
   "apiVersion": 1,
   "id": "sample.focus-timer",
   "name": "Focus Timer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A data-only focus timer for DSH Mobile. It adds a docked Focus page with a 25/5 block plan, a Focus Timer card on the Now screen, a Settings card that shows where the pack came from, one composer chip that asks the assistant for a three-step plan, and a warm amber accent derived from the bundled Refined Ember palette. Nothing here runs code or keeps a clock in the background: the countdown lives in the prompts you send, and every button is one fixed action the app already knows how to perform. This is the sample used to demonstrate install from a Git repository.",
   "author": "DSH Mobile Samples",
   "experimental": true,
@@ -99,7 +99,7 @@
   "homeCards": [
     {
       "title": "FOCUS TIMER",
-      "subtitle": "Data-only demo pack, updated from Git",
+      "subtitle": "Data-only demo pack, updated from Git - v1.0.2",
       "rows": [
         {
           "label": "BLOCK",
